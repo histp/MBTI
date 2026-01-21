@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI 검사</title>
+
+    <style>
+
+        @font-face {
+            font-family: 'KERISKEDU_R';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-3@1.0/KERISKEDU_R.woff2') format('woff2');
+            font-weight: 400;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'KERISKEDU_B';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-3@1.0/KERISKEDU_B.woff2') format('woff2');
+            font-weight: 700;
+            font-display: swap;
+        }
+
+        
+        body {
+            font-family: 'KERISKEDU_R';
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0px;;
+            background-color: rgb(198, 227, 234);
+            color: rgb(39, 102, 116);
+        }
+
+        * {
+            text-align: center;
+        }
+
+        div {
+            background-color: rgb(166, 220, 232);
+            border: 2px dashed rgb(111, 166, 179);
+            margin: 15px;
+            padding: 20px;
+            border-radius: 30px;
+        }
+
+        button {
+            width: 150px;
+            height: 80px;
+            font-size: 20px;
+            margin: 15px;
+            background-color: rgb(166, 220, 232);
+            color: rgb(39, 102, 116);
+            border: 5px dashed rgb(39, 102, 116);
+            border-radius: 20px;
+        }
+
+        h1 {
+            font-family: 'KERISKEDU_B';
+        }
+
+        #result {
+            padding: 0px 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍나의 MBTI는?🔍</h1>
+    <h3>둘 중 하나를 골라보세요!</h3>
+    <div>
+        <p>1. 내가 보통 학교에서 혼나는 이유는?</p>
+        <input type="radio" id="E" value="E" name="EI"> 시끄러워서
+        <input type="radio" id="I" value="I" name="EI"> 학교생활에 적응을 못해서
+    </div>
+    <div>
+        <p>친구와 대화 흐름은?</p>
+        <input type="radio" id="S" value="S" name="SN"> 일정한 범위 안에서 대화가 지속된다
+        <input type="radio" id="N" value="N" name="SN"> 어느 순간 먼 산에 가 있다
+    </div>
+    <div>
+        <p>내가 주로 받는 오해는?</p>
+        <input type="radio" id="T" value="T" name="TF"> 감정 없는 거 아니냐는 오해
+        <input type="radio" id="F" value="F" name="TF"> 눈치 많이 본다는 오해
+    </div>
+    <div>
+        <p>내일 여행을 간다. 지금 하고 있는 행동은?</p>
+        <input type="radio" id="J" value="J" name="JP"> 짐 싸고 이미 코스 다 짬
+        <input type="radio" id="P" value="P" name="JP"> 발이 가는 대로~ 짐도 내일 아침에 싸
+    </div>
+    <button id="Btn">결과 확인하기!</button>
+    <div>
+        <h2 id="result">나의 MBTI는?</h2><!-- 결과-->
+    </div>
+
+
+    <script>
+        function mbti() {
+            let EE = document.getElementById('E').checked;
+            let II = document.getElementById('I').checked;
+
+            let NN = document.getElementById('N').checked;
+            let SS = document.getElementById('S').checked;
+
+            let TT = document.getElementById('T').checked;
+            let FF = document.getElementById('F').checked;
+
+            let JJ = document.getElementById('J').checked;
+            let PP = document.getElementById('P').checked;
+
+            let 결과 = document.getElementById('result');
+
+            if (EE && NN && TT && JJ) {결과.textContent = 'ENTJ';}
+            else if (EE && SS && TT && JJ) {결과.textContent = 'ESTJ, 행동대장';}
+            else if (EE && SS && FF && JJ) {결과.textContent = 'ESFJ, 칭찬 바라기';}
+            else if (EE && SS && TT && PP) {결과.textContent = 'ESTP, 임기응변';}
+            else if (II && SS && TT && JJ) {결과.textContent = 'ISTJ, 모범생';}
+            else if (II && SS && FF && JJ) {결과.textContent = 'ISFJ, 다정다감';}
+            else if (II && NN && FF && JJ) {결과.textContent = 'INFJ, 고민쟁이';}
+            else if (II && NN && TT && JJ) {결과.textContent = 'INTJ, 지적인 카리스마';}
+            else if (II && SS && TT && PP) {결과.textContent = 'ISTP, 귀차니즘';}
+            else if (II && SS && FF && PP) {결과.textContent = 'ISFP, 순둥이';}
+            else if (II && NN && FF && PP) {결과.textContent = 'INFP, 유리멘탈';}
+            else if (II && NN && TT && PP) {결과.textContent = 'INTP, 아이디어 뱅크';}
+            else if (EE && SS && FF && PP) {결과.textContent = 'ESFP, 분위기 메이커';}
+            else if (EE && NN && FF && PP) {결과.textContent = 'ENFP, 공감왕';}
+            else if (EE && NN && TT && PP) {결과.textContent = 'ENTP, 고정관념 파괴자';}
+            else if (EE && NN && FF && JJ) {결과.textContent = 'ENFJ, 아낌없이 주는 나무';}
+        }
+        Btn.onclick = mbti;
+    </script>
+</body>
+</html>
